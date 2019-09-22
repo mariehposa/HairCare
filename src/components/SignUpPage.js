@@ -13,6 +13,17 @@ const userForm = {
 }
 
 export default function SignUpPage () {
+    const addUser = (formValues, actions) => {
+        const userToSubmit = {
+            name: formValues.name,
+            email: formValues.email,
+            password: formValues.password,
+            role: formValues.role,
+        };
+
+        console.log(userToSubmit);
+    }
+
     return (
         <div>
             <h1>Signup</h1>
@@ -63,9 +74,13 @@ const userValidation = yup.object().shape({
 })
 
 
-function NewUserForm() {
+function NewUserForm({onSubmitButton}) {
     return(
         <Formik
+            validationSchema={userValidation}
+            validate={validateUser}
+            initialValues={userForm}
+            onSubmit={onSubmit}
             render={props => {
                 return (
                     <Form>
