@@ -8,6 +8,7 @@ const userForm = {
     email: '',
     password: '',
     location: '',
+    service: 'customer',
     terms: false,
 }
 
@@ -38,12 +39,29 @@ const validateUser = (formValue) => {
         errors.password = 'Please enter a valid password!';
     }
 
+    if (!formValue.location) {
+        errors.location = 'Please enter a valid password!';
+    } else if (formValue.location.length < 2) {
+        errors.location = 'Oops! That is short!';
+    }
+
     if (!formValue.terms){
         errors.terms = "Read and accept terms"
     }
 
     return errors;
 }
+
+const userValidation = yup.object().shape({
+    name: yup.string().required('Use correct name!'),
+    username: yup.string().required('Use correct username!'),
+    email: yup.string().required('Enter valid email!').email("Enter a valid email containing @"),
+    password: yup.string().required('Input correct password!'),
+    location: yup.string().required('Location is required!'),
+    service: yup.string().required('Select one option'),
+    terms: yup.boolean().required("box is required")
+})
+
 
 function NewUserForm() {
     return(
@@ -76,12 +94,18 @@ function NewUserForm() {
                         </label>
                         <br/>
                         <label>
+                            Location
+                            <Field name='location' type='text' placeholder='Enter your Location' />
+                            <ErrorMessage name='location' component='div' />
+                        </label>
+                        <br/>
+                        <label>
                             Type of service
                             <Field component="select" name="service">
-                                <option value="stylist">Stylist</option>
                                 <option value="customer">Customer</option>
+                                <option value="stylist">Stylist</option>
                             </Field>
-                            <ErrorMessage name='password' component='div' />
+                            <ErrorMessage name='service' component='div' />
                         </label>
                         <br/>
                         <label>
