@@ -1,18 +1,18 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import {NavigationStyle, StyledLink} from './Styles';
 
 export default function Navigation () {
     return (
-        <div>
+        <NavigationStyle>
             <div>
-                <Link to="/">Home</Link>
+                <StyledLink to="/">Home</StyledLink>
             </div>
             <div>
-                <Link to="/login">Login</Link>
+                <StyledLink to="/login">Login</StyledLink>
             </div>
             <div>
-                <Link to="/signup">SignUp</Link>
+                <StyledLink to="/signup">SignUp</StyledLink>
             </div>
-        </div>
+        </NavigationStyle>
     );
 }
