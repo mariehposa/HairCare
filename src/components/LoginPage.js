@@ -27,6 +27,11 @@ const validateUser = (formValue) => {
     }
 }
 
+const userValidation = yup.object().shape({
+    username: yup.string().required('Use correct username!'),
+    password: yup.string().required('Input correct password!')
+})
+
 function NewUserForm({onSubmitButton}) {
     return(
         <Formik
