@@ -1,6 +1,7 @@
 import React from "react";
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
+import {LoginStyle, StyledField , StyledButton} from './Styles';
 
 const userForm = {
     username: '',
@@ -51,21 +52,19 @@ function NewUserForm({onLoginButton}) {
             onSubmit={onLoginButton}
             render={props => {
                 return (
-                    <Form>
+                    <LoginStyle>
                         <label>
-                            Username
-                            <Field name='username' type='text' placeholder='Enter your name' />
+                           <div>Username</div>
+                            <StyledField name='username' type='text' placeholder='Enter your name' />
                             <ErrorMessage name='username' component='div' />
                         </label>
-                        <br/>
                         <label>
-                            Password
-                            <Field name='password' type='text' placeholder='Enter your Name' />
+                            <div>Password</div>
+                            <StyledField name='password' type='text' placeholder='Enter your Name' />
                             <ErrorMessage name='password' component='div' />
                         </label>
-                        <br/>
-                        <button type='submit'>Login</button>
-                    </Form>
+                        <StyledButton type='submit'>Login</StyledButton>
+                    </LoginStyle>
                 )
             }}
         />
