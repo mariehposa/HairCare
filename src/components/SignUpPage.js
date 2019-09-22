@@ -22,11 +22,12 @@ export default function SignUpPage () {
         };
 
         console.log(userToSubmit);
+        actions.resetForm();
     }
 
     return (
         <div>
-            <h1>Signup</h1>
+            <NewUserForm onSubmitButton={addUser}/>
         </div>
     );
 }
@@ -35,23 +36,23 @@ const validateUser = (formValue) => {
     const errors = {};
 
     if (!formValue.name) {
-        errors.name = 'Please enter a valid name!';
+        errors.name = 'Name is reguired!';
     }
 
     if (!formValue.username) {
-        errors.username = 'Please enter a valid username!'
+        errors.username = 'Username is required!'
     }
 
     if(!formValue.email) {
-        errors.email = 'Please enter a valid email!';  
+        errors.email = 'Email is required!';  
     }
 
     if (!formValue.password) {
-        errors.password = 'Please enter a valid password!';
+        errors.password = 'Password is required!';
     }
 
     if (!formValue.location) {
-        errors.location = 'Please enter a valid password!';
+        errors.location = 'Location is required!';
     } else if (formValue.location.length < 2) {
         errors.location = 'Oops! That is short!';
     }
@@ -69,10 +70,8 @@ const userValidation = yup.object().shape({
     email: yup.string().required('Enter valid email!').email("Enter a valid email containing @"),
     password: yup.string().required('Input correct password!'),
     location: yup.string().required('Location is required!'),
-    service: yup.string().required('Select one option'),
     terms: yup.boolean().required("box is required")
 })
-
 
 function NewUserForm({onSubmitButton}) {
     return(
@@ -80,7 +79,7 @@ function NewUserForm({onSubmitButton}) {
             validationSchema={userValidation}
             validate={validateUser}
             initialValues={userForm}
-            onSubmit={onSubmit}
+            onSubmit={onSubmitButton}
             render={props => {
                 return (
                     <Form>
