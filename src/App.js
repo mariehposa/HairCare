@@ -9,12 +9,11 @@ import { Route } from 'react-router-dom';
 function App() {
   return (
     <div className="App">
-      <HomePage />
-      <LoginPage />
-      <SignUpPage />
       <Navigation />
 
       <Route exact path="/" component={HomePage} />
+      <Route path="/login" component={LoginPage} />
+      <Route path="/signup" component={SignUpPage} />
     </div>
   );
 }
