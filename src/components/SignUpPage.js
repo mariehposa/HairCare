@@ -44,3 +44,56 @@ const validateUser = (formValue) => {
 
     return errors;
 }
+
+function NewUserForm() {
+    return(
+        <Formik
+            render={props => {
+                return (
+                    <Form>
+                        <label>
+                            Name
+                            <Field name='name' type='text' placeholder='Enter your name' />
+                            <ErrorMessage name='name' component='div' />
+                        </label>
+                        <br/>
+                        <label>
+                            username
+                            <Field name='username' type='text' placeholder='Enter your Name' />
+                            <ErrorMessage name='username' component='div' />
+                        </label>
+                        <br/>
+                        <label>
+                            Email
+                            <Field name='email' type='text' placeholder='Enter your Email' />
+                            <ErrorMessage name='email' component='div' />
+                        </label>
+                        <br/>
+                        <label>
+                            Password
+                            <Field name='password' type='text' placeholder='Enter your Password' />
+                            <ErrorMessage name='password' component='div' />
+                        </label>
+                        <br/>
+                        <label>
+                            Type of service
+                            <Field component="select" name="service">
+                                <option value="stylist">Stylist</option>
+                                <option value="customer">Customer</option>
+                            </Field>
+                            <ErrorMessage name='password' component='div' />
+                        </label>
+                        <br/>
+                        <label>
+                            Terms and Agreement
+                            <Field name='terms' type='checkbox' />
+                            <ErrorMessage name='terms' component='div' />
+                        </label>
+                        <br/>
+                        <button type='submit'>Submit</button>
+                    </Form>
+                )
+            }}
+        />
+    );
+}
