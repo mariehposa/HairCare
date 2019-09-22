@@ -1,6 +1,7 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
+import {SignUpStyle, StyledField , StyledButton} from './Styles';
 
 const userForm = {
     name: '',
@@ -38,7 +39,7 @@ const validateUser = (formValue) => {
     const errors = {};
 
     if (!formValue.name) {
-        errors.name = 'Name is reguired!';
+        errors.name = 'Name is required!';
     }
 
     if (!formValue.username) {
@@ -84,54 +85,48 @@ function NewUserForm({onSubmitButton}) {
             onSubmit={onSubmitButton}
             render={props => {
                 return (
-                    <Form>
+                    <SignUpStyle>
+                        <h3>Create an account</h3>
                         <label>
                             Name
-                            <Field name='name' type='text' placeholder='Enter your name' />
+                            <StyledField name='name' type='text' placeholder='Enter your name' />
                             <ErrorMessage name='name' component='div' />
                         </label>
-                        <br/>
                         <label>
-                            username
-                            <Field name='username' type='text' placeholder='Enter your Name' />
+                            Username
+                            <StyledField name='username' type='text' placeholder='Enter your Name' />
                             <ErrorMessage name='username' component='div' />
                         </label>
-                        <br/>
                         <label>
                             Email
-                            <Field name='email' type='text' placeholder='Enter your Email' />
+                            <StyledField name='email' type='text' placeholder='Enter your Email' />
                             <ErrorMessage name='email' component='div' />
                         </label>
-                        <br/>
                         <label>
                             Password
-                            <Field name='password' type='text' placeholder='Enter your Password' />
+                            <StyledField name='password' type='text' placeholder='Enter your Password' />
                             <ErrorMessage name='password' component='div' />
                         </label>
-                        <br/>
                         <label>
                             Location
-                            <Field name='location' type='text' placeholder='Enter your Location' />
+                            <StyledField name='location' type='text' placeholder='Enter your Location' />
                             <ErrorMessage name='location' component='div' />
                         </label>
-                        <br/>
                         <label>
                             Type of service
-                            <Field component="select" name="service">
+                            <StyledField component="select" name="service">
                                 <option value="customer">Customer</option>
                                 <option value="stylist">Stylist</option>
-                            </Field>
+                            </StyledField>
                             <ErrorMessage name='service' component='div' />
                         </label>
-                        <br/>
                         <label>
                             Terms and Agreement
-                            <Field name='terms' type='checkbox' />
+                            <StyledField name='terms' type='checkbox' />
                             <ErrorMessage name='terms' component='div' />
                         </label>
-                        <br/>
-                        <button type='submit'>Submit</button>
-                    </Form>
+                        <StyledButton type='submit'>Sign Up</StyledButton>
+                    </SignUpStyle>
                 )
             }}
         />

@@ -24,10 +24,21 @@ export const LoginStyle = styled(Form)`
     margin: 0 auto;
 `
 
+export const SignUpStyle = styled(Form)`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    border: .2rem solid ;
+    padding: 2rem 0;
+    border-radius: 2rem;
+    margin: 0 auto;
+`
+
 export const StyledField = styled(Field)`
-    width: 60%;
+    width: 45%;
     padding: .7rem;
-    margin: 1rem 0;
+    margin: 1rem ;
 `
 
 export const StyledButton = styled.button`
