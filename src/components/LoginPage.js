@@ -8,9 +8,19 @@ const userForm = {
 }
 
 export default function LoginPage () {
+    const loginInUser = (formValues, actions) => {
+        const userToLogin = {
+            username: formValues.username,
+            password: formValues.password
+        };
+
+        console.log(userToLogin);
+        actions.resetForm();
+    }
+
     return (
         <div>
-            <h1>Login</h1>
+            <NewUserForm onLoginButton={loginInUser}/>
         </div>
     );
 }
@@ -32,9 +42,13 @@ const userValidation = yup.object().shape({
     password: yup.string().required('Input correct password!')
 })
 
-function NewUserForm({onSubmitButton}) {
+function NewUserForm({onLoginButton}) {
     return(
         <Formik
+            validationSchema={userValidation}
+            validate={validateUser}
+            initialValues={userForm}
+            onSubmit={onLoginButton}
             render={props => {
                 return (
                     <Form>

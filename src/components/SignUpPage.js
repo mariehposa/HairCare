@@ -16,9 +16,11 @@ export default function SignUpPage () {
     const addUser = (formValues, actions) => {
         const userToSubmit = {
             name: formValues.name,
+            username: formValues.username,
             email: formValues.email,
             password: formValues.password,
-            role: formValues.role,
+            location: formValues.location,
+            service: formValues.service,
         };
 
         console.log(userToSubmit);
