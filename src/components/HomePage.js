@@ -1,9 +1,11 @@
 import React from "react";
+import {StyledHeader} from './Styles';
+
 
 export default function Homepage () {
     return (
-        <div>
+        <StyledHeader>
             <h1>Welcome to BW HAIR CARE</h1>
-        </div>
+        </StyledHeader>
     );
 }

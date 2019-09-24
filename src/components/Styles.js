@@ -50,3 +50,7 @@ export const StyledButton = styled.button`
    margin: 0 auto;
    align-content: center;
 `
+
+export const StyledHeader = styled.h1`
+    font-family: 'Amatic SC', cursive;
+`
