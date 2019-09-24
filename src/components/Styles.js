@@ -22,6 +22,7 @@ export const LoginStyle = styled(Form)`
     padding: 2rem 0;
     border-radius: 2rem;
     margin: 0 auto;
+    font-family: 'Oswald', sans-serif;
 `
 
 export const SignUpStyle = styled(Form)`
@@ -33,6 +34,7 @@ export const SignUpStyle = styled(Form)`
     padding: 2rem 0;
     border-radius: 2rem;
     margin: 0 auto;
+    font-family: 'Oswald', sans-serif;
 `
 
 export const StyledField = styled(Field)`
@@ -45,8 +47,8 @@ export const StyledButton = styled.button`
    width: 20%;
    padding: 1.2rem;
    border-radius: 2rem;
-   background: blue;
-   color: white;
+   background:  #9da3a4;
+   color: #604d53;
    margin: 0 auto;
    align-content: center;
 `
