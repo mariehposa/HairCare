@@ -13,6 +13,9 @@ export default function Navigation () {
             <div>
                 <StyledLink to="/signup">SignUp</StyledLink>
             </div>
+            <div>
+                <StyledLink to="/search">Search</StyledLink>
+            </div>
         </NavigationStyle>
     );
 }
