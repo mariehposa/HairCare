@@ -56,3 +56,56 @@ export const StyledButton = styled.button`
 export const StyledHeader = styled.h1`
     font-family: 'Amatic SC', cursive;
 `
+
+export const ParentStyle = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+`
+
+export const StylistStyle = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 2.5rem;
+    width: 35%;
+    border: .2rem solid ;
+    border-radius: 2rem ;
+    color: blue;
+    padding: 2rem;
+    font-family: 'Oswald', sans-serif;
+
+    &:hover{
+        border: .2rem solid green;
+        border-radius: 2rem;
+        color: black;
+    }
+
+   img{
+       border-radius: 5rem;
+       width: 100%;
+   }
+
+    h2{
+        color: black;
+        font-family: 'Amatic SC', cursive;
+        font-size: 3rem;
+
+        &:hover{
+            color: green;
+            font-size: 1.6rem;
+        }
+    }
+`
+export const SearchStyle = styled(Field)`
+    padding: 1rem;
+    font-family: 'Oswald', sans-serif;
+`
+
+export const SearchButton = styled.button`
+   padding: .7rem;
+   border-radius: 2rem;
+   background:  #9da3a4;
+   color: #604d53;
+   margin-left: 1rem;
+   align-content: center;
+`
