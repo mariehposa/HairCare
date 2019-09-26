@@ -1,7 +1,8 @@
 import React from "react";
 import { Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
-import {SignUpStyle, StyledField , StyledButton} from './Styles';
+import { SignUpStyle, StyledField, StyledButton } from './Styles';
+import axios from 'axios';
 
 const userForm = {
     name: '',
@@ -13,7 +14,7 @@ const userForm = {
     terms: false,
 }
 
-export default function SignUpPage () {
+export default function SignUpPage() {
     const addUser = (formValues, actions) => {
         const userToSubmit = {
             name: formValues.name,
@@ -25,12 +26,35 @@ export default function SignUpPage () {
         };
 
         console.log(userToSubmit);
+
+        axios.post(`https://haircarebackend.herokuapp.com/api/stylists/`, 
+        { 
+            username: userToSubmit.username, 
+            password: userToSubmit.password, 
+            name: userToSubmit.name, 
+            email_address: userToSubmit.email,
+            location: userToSubmit.location,
+            specialty: "",
+            bio: ""
+        })
+            .then(res => {
+                console.log(res.data);
+                // localStorage.setItem("token", res.data)
+
+                // console.log(localStorage.getItem("token"));
+
+            })
+            .catch(err => {
+                console.log(err);
+            })
+
+
         actions.resetForm();
     }
 
     return (
         <div>
-            <NewUserForm onSubmitButton={addUser}/>
+            <NewUserForm onSubmitButton={addUser} />
         </div>
     );
 }
@@ -46,8 +70,8 @@ const validateUser = (formValue) => {
         errors.username = 'Username is required!'
     }
 
-    if(!formValue.email) {
-        errors.email = 'Email is required!';  
+    if (!formValue.email) {
+        errors.email = 'Email is required!';
     }
 
     if (!formValue.password) {
@@ -60,7 +84,7 @@ const validateUser = (formValue) => {
         errors.location = 'Oops! That is short!';
     }
 
-    if (!formValue.terms){
+    if (!formValue.terms) {
         errors.terms = "Read and accept terms"
     }
 
@@ -76,8 +100,8 @@ const userValidation = yup.object().shape({
     terms: yup.boolean().required("box is required")
 })
 
-function NewUserForm({onSubmitButton}) {
-    return(
+function NewUserForm({ onSubmitButton }) {
+    return (
         <Formik
             validationSchema={userValidation}
             validate={validateUser}
