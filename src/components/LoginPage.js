@@ -1,14 +1,15 @@
 import React from "react";
 import { Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
-import {LoginStyle, StyledField , StyledButton} from './Styles';
+import { LoginStyle, StyledField, StyledButton } from './Styles';
+import axios from 'axios';
 
 const userForm = {
     username: '',
     password: '',
 }
 
-export default function LoginPage () {
+export default function LoginPage() {
     const loginInUser = (formValues, actions) => {
         const userToLogin = {
             username: formValues.username,
@@ -16,12 +17,24 @@ export default function LoginPage () {
         };
 
         console.log(userToLogin);
+        
+        axios.post(`https://haircarebackend.herokuapp.com/api/stylists/login`, { username: userToLogin.username, password: userToLogin.password })
+        .then(res => {
+            console.log(res.data);
+            localStorage.setItem("token", res.data)
+
+            console.log(localStorage.getItem("token"));
+            
+        })
+        .catch(err => {
+            console.log(err);
+        })
         actions.resetForm();
     }
 
     return (
         <div>
-            <NewUserForm onLoginButton={loginInUser}/>
+            <NewUserForm onLoginButton={loginInUser} />
         </div>
     );
 }
@@ -43,8 +56,8 @@ const userValidation = yup.object().shape({
     password: yup.string().required('Input correct password!')
 })
 
-function NewUserForm({onLoginButton}) {
-    return(
+function NewUserForm({ onLoginButton }) {
+    return (
         <Formik
             validationSchema={userValidation}
             validate={validateUser}
@@ -54,7 +67,7 @@ function NewUserForm({onLoginButton}) {
                 return (
                     <LoginStyle>
                         <label>
-                           <div>Username</div>
+                            <div>Username</div>
                             <StyledField name='username' type='text' placeholder='Enter your name' />
                             <ErrorMessage name='username' component='div' />
                         </label>
