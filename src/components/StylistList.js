@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import StylistCard from './StylistCard';
 import SearchPage from './SearchPage';
-import {ParentStyle} from './Styles';
+import {ParentStyle, StyledPage } from './Styles';
 
 const stylistApi = `https://reqres.in/api/users?page=2`;
 
@@ -30,13 +30,13 @@ export default function StylistList() {
   }, [url]);
 
   return (
-    <section>
+    <StyledPage>
       <SearchPage onSubmit={search} />
         <ParentStyle>
           {
             stylistData.map(character => <StylistCard key={character.id} person={character} /> )
           }
         </ParentStyle>
-    </section>
+    </StyledPage>
   );
 }

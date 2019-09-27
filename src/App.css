@@ -1,24 +1,17 @@
 .App {
   text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
   /* background-image: url('./components/img/blake-wisz-GFrBMipOd_E-unsplash.jpg');
   background-size: cover; */
 }
 
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #09d3ac;
+.Particles{
+  position: fixed;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
 }

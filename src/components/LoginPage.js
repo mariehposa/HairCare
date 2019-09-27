@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
-import { LoginStyle, StyledField, StyledButton } from './Styles';
+import { LoginStyle, StyledField, StyledButton, StyledPage} from './Styles';
 import axios from 'axios';
 
 const userForm = {
@@ -33,9 +33,9 @@ export default function LoginPage() {
     }
 
     return (
-        <div>
+        <StyledPage>
             <NewUserForm onLoginButton={loginInUser} />
-        </div>
+        </StyledPage>
     );
 }
 

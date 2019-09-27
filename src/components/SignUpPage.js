@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
-import { SignUpStyle, StyledField, StyledButton } from './Styles';
+import { SignUpStyle, StyledField, StyledButton, StyledPage } from './Styles';
 import axios from 'axios';
 
 const userForm = {
@@ -53,9 +53,9 @@ export default function SignUpPage() {
     }
 
     return (
-        <div>
+        <StyledPage>
             <NewUserForm onSubmitButton={addUser} />
-        </div>
+        </StyledPage>
     );
 }
 
